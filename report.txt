@@ -1,0 +1,24 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 0 issues that require attention
+--------------------------------------------------------------------------------
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'export.py'
+ outputting to 'export-upgraded.py'
+--------------------------------------------------------------------------------
+
+16:0: INFO: Renamed 'tf.logging.set_verbosity' to 'tf.compat.v1.logging.set_verbosity'
+16:25: INFO: Renamed 'tf.logging.DEBUG' to 'tf.compat.v1.logging.DEBUG'
+25:4: INFO: Renamed 'tf.train.write_graph' to 'tf.io.write_graph'
+29:12: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+37:19: INFO: Renamed 'tf.graph_util.convert_variables_to_constants' to 'tf.compat.v1.graph_util.convert_variables_to_constants'
+38:15: INFO: Renamed 'tf.graph_util.remove_training_nodes' to 'tf.compat.v1.graph_util.remove_training_nodes'
+48:9: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+49:17: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+
