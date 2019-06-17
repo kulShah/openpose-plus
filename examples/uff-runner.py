@@ -5,8 +5,8 @@ import argparse
 import os
 
 import numpy as np
-#import pycuda.autoinit as _
-#import pycuda.driver as cuda
+import pycuda.autoinit as _
+import pycuda.driver as cuda
 import tensorflow as tf
 import tensorlayer as tl
 import tensorrt as trt
