@@ -9,6 +9,7 @@ __pycache__
 *.idx
 *.jpg
 *.log
+*.npz
 *.out
 *.png
 .vscode/
