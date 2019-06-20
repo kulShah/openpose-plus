@@ -5,6 +5,7 @@ import argparse
 import os
 import sys
 import time
+import glob
 
 import numpy as np
 import tensorflow as tf
@@ -62,11 +63,14 @@ def parse_args():
     parser = argparse.ArgumentParser(description='inference')
     parser.add_argument(
         '--path-to-freezed-model', type=str, default='checkpoints/freezed', help='path to freezed-model', required=True)
-    parser.add_argument('--images', type=str, default='', help='comma separate list of image filenames', required=True)
+    #parser.add_argument('--images', type=str, default='', help='comma separate list of image filenames', required=True)
+    parser.add_argument('--images_dir', type=str, default='', help='directory containing images', required=True)
+    parser.add_argument('--limit', type=int, default=1000, help='max number of images.')
     return parser.parse_args()
 
 
 if __name__ == '__main__':
     args = parse_args()
-    image_files = [f for f in args.images.split(',') if f]
+    # image_files = [f for f in args.images.split(',') if f]
+    image_files = glob.glob(args.images_dir)[:args.limit]
     inference(args.path_to_freezed_model, image_files)
