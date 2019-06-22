@@ -39,6 +39,6 @@ class TfPoseEstimator:
             })
 
         t = time.time()
-        humans, heatmap_up, pafmap_up = self.post_processor(heatmap[0], pafmap[0])
+        humans, heatmap_up, pafmap_up = self.post_processor(heatmap[0], pafmap[0], data_format='channels_last')
         logger.info('estimate time=%.5f' % (time.time() - t))
         return humans, heatmap_up, pafmap_up

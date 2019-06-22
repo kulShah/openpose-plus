@@ -26,18 +26,20 @@ class TfPoseestimatorLoader(TfPoseEstimator):
 
         parameter_names = [
             'image',
-            'upsample_size',
-            'upsample_heatmat',
-            'tensor_peaks',
-            'upsample_pafmat',
+            #'upsample_size',
+            #'upsample_heatmat',
+            #'tensor_peaks',
+            #'upsample_pafmat',
+            'outputs/conf',
+            'outputs/paf',
         ]
 
         for name in parameter_names:
             op = get_op(graph, name)
             print(op)
 
-        (self.tensor_image, self.upsample_size, self.tensor_heatMat_up, self.tensor_peaks,
-         self.tensor_pafMat_up) = [get_op(graph, name) for name in parameter_names]
+        #(self.tensor_image, self.upsample_size, self.tensor_heatMat_up, self.tensor_peaks, self.tensor_pafMat_up) = [get_op(graph, name) for name in parameter_names]
+        (self.tensor_image, self.tensor_heatmap, self.tensor_paf) = [get_op(graph, name) for name in parameter_names]
 
         self._warm_up(graph)
 
@@ -56,7 +58,7 @@ def inference(path_to_freezed_model, input_files):
         if humans:
             for h in humans:
                 print(h)
-        plot_humans(image, heatMap, pafMap, humans, '%02d' % (idx + 1))
+        #plot_humans(image, heatMap, pafMap, humans, '%02d' % (idx + 1))
 
 
 def parse_args():
@@ -64,7 +66,7 @@ def parse_args():
     parser.add_argument(
         '--path-to-freezed-model', type=str, default='checkpoints/freezed', help='path to freezed-model', required=True)
     #parser.add_argument('--images', type=str, default='', help='comma separate list of image filenames', required=True)
-    parser.add_argument('--images_dir', type=str, default='', help='directory containing images', required=True)
+    parser.add_argument('--images-dir', type=str, default='', help='directory containing images', required=True)
     parser.add_argument('--limit', type=int, default=1000, help='max number of images.')
     return parser.parse_args()
 

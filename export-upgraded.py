@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Export pre-trained openpose model for C++/TensorRT."""
-
 import argparse
 import os
 import sys
@@ -13,7 +12,7 @@ sys.path.append('.')
 from openpose_plus.inference.common import measure, rename_tensor
 from openpose_plus.models import get_model
 
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.DEBUG)
+tf.logging.set_verbosity(tf.logging.DEBUG)
 tl.logging.set_verbosity(tl.logging.DEBUG)
 
 
@@ -26,7 +25,7 @@ def save_graph(sess, checkpoint_dir, name):
 
 
 def save_model(sess, checkpoint_dir, global_step=0):
-    saver = tf.compat.v1.train.Saver()
+    saver = tf.train.Saver()
     checkpoint_prefix = os.path.join(checkpoint_dir, "saved_checkpoint")
     checkpoint_state_name = 'checkpoint_state'
     saver.save(sess, checkpoint_prefix, global_step=global_step, latest_filename=checkpoint_state_name)
@@ -34,8 +33,8 @@ def save_model(sess, checkpoint_dir, global_step=0):
 
 def save_uff(sess, names, filename):
     import uff
-    frozen_graph = tf.compat.v1.graph_util.convert_variables_to_constants(sess, sess.graph_def, names)
-    tf_model = tf.compat.v1.graph_util.remove_training_nodes(frozen_graph)
+    frozen_graph = tf.graph_util.convert_variables_to_constants(sess, sess.graph_def, names)
+    tf_model = tf.graph_util.remove_training_nodes(frozen_graph)
     uff.from_tensorflow(tf_model, names, output_filename=filename)
 
 
@@ -45,8 +44,8 @@ def export_model(model_func, checkpoint_dir, path_to_npz, graph_filename, uff_fi
     names = [p.name[:-2] for p in model_parameters]
     print('name: %s' % ','.join(names))
 
-    with tf.compat.v1.Session() as sess:
-        sess.run(tf.compat.v1.global_variables_initializer())
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
         measure(lambda: tl.files.load_and_assign_npz_dict(path_to_npz, sess), 'load npz')
 
         if graph_filename:
