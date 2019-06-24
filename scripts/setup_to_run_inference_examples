@@ -3,7 +3,7 @@
 # Setup script to run ./examples/example-inference-1.py
 
 apt-get update
-apt-get install -y bc swig
+apt-get install -y bc swig libgflags-dev
 pip3 install -r requirements.txt
 pip install pycocotools
 chmod +x ./scripts/install-pafprocess.sh 
@@ -16,6 +16,7 @@ chmod +x ./scripts/install-pafprocess.sh
 # python3 ./examples/example-inference-1.py --path-to-npz='hao28-pose345000.npz' --images_dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental --data-format='channels_last'
 
 # Freeze model before running inference example 2
-# 
+# chmod +x ./scripts/freeze-graph.sh
+# ./scripts/freeze-graph.sh
 
-# python3 ./examples/example-inference-2.py --path-to-freezed-model='checkpoints/freezed' --images-dir='./data/mscoco2017/test2017_subset/*.jpg'
+# python3 ./examples/example-inference-2.py --path-to-freezed-model='checkpoints/freezed' --images-dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental
