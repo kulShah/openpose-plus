@@ -41,8 +41,11 @@ freeze() {
         --output_node_names ${OUTPUT_NODE_NAMES}
 }
 
-BASE_MODEL=vgg
-PATH_TO_NPZ=${HOME}/Downloads/vgg450000_no_cpm.npz
+BASE_MODEL=hao28_experimental
+PATH_TO_NPZ=hao28-pose345000.npz
+
+# BASE_MODEL=vgg
+# PATH_TO_NPZ=./models/pose135000.npz
 
 # BASE_MODEL=mobilenet
 # PATH_TO_NPZ=${HOME}/Downloads/mbn28000.npz

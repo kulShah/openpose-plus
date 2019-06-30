@@ -4,12 +4,15 @@ __pycache__
 *.a
 *.avi
 *.dylib
+*.gch
 *.gz
 *.idx
 *.jpg
 *.log
+*.npz
 *.out
 *.png
+.vscode/
 *.uff
 /3rdparty
 /bazel-*
@@ -31,6 +34,7 @@ CPackConfig.cmake
 CPackSourceConfig.cmake
 CTestTestfile.cmake
 inference/*png
+models/
 libstdtensor-prefix
 libstdtracer-prefix
 Makefile
