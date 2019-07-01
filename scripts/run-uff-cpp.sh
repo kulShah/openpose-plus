@@ -4,8 +4,9 @@ set -e
 make
 echo
 
-MODEL_DIR=$HOME/Downloads
-MODEL_FILE=${MODEL_DIR}/hao28-600000-256x384.uff
+# MODEL_DIR=$HOME/Downloads
+# MODEL_FILE=${MODEL_DIR}/hao28-600000-256x384.uff
+MODEL_FILE=hao28-600000-256x384.uff
 
 repeat=20
 gksize=13
@@ -49,5 +50,5 @@ with_images() {
         $D/126/cam1_2386.png
 }
 
-# with_images run_batch_example
-with_images run_stream_example
+with_images run_batch_example
+# with_images run_stream_example

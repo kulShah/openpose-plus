@@ -10,6 +10,8 @@ chmod +x ./scripts/install-pafprocess.sh
 # Download the model
 wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-pose345000.npz
 
+wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-600000-256x384.uff
+
 # Command to run inference example 1
 # python3 ./examples/example-inference-1.py --path-to-npz='hao28-pose345000.npz' --images-dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental --data-format='channels_last'
 
@@ -17,4 +19,8 @@ wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/mas
 chmod +x ./scripts/freeze-graph.sh
 ./scripts/freeze-graph.sh
 
+# make pack
+
 # python3 ./examples/example-inference-2.py --path-to-freezed-model='checkpoints/freezed' --images-dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental
+
+# g++ -std=c++11 ./examples/example_batch_detector.cpp -lgflags -lopencv_core -lopencv_highgui -lopencv_imgproc

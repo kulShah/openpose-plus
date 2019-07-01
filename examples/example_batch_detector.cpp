@@ -1,7 +1,7 @@
 #include <chrono>
 #include <memory>
 
-// #include "trace.hpp"
+#include "trace.hpp"
 #include <gflags/gflags.h>
 #include <opencv2/opencv.hpp>
 
@@ -9,7 +9,7 @@
 #include "utils.hpp"
 
 // Model flags
-DEFINE_string(model_file, "vgg.uff", "Path to uff model.");
+DEFINE_string(model_file, "hao28-600000-256x384.uff", "Path to uff model.");
 DEFINE_int32(input_height, 368, "Height of input image.");
 DEFINE_int32(input_width, 432, "Width of input image.");
 
@@ -25,7 +25,7 @@ DEFINE_string(image_files, "", "Comma separated list of pathes to image.");
 
 int main(int argc, char *argv[])
 {
-    // TRACE_SCOPE(__func__);
+    TRACE_SCOPE(__func__);
     gflags::ParseCommandLineFlags(&argc, &argv, true);
 
     // TODO: derive from model
@@ -43,7 +43,9 @@ int main(int argc, char *argv[])
         using duration_t = std::chrono::duration<double>;
         const auto t0 = clock_t::now();
 
+
         pd->inference(files);
+        std::cout<<"inferencing done"<<std::endl;
 
         const int n = files.size();
         const duration_t d = clock_t::now() - t0;

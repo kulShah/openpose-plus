@@ -4,8 +4,8 @@ set -e
 make
 echo
 
-MODEL_DIR=$HOME/Downloads
-MODEL_FILE=${MODEL_DIR}/hao28-600000-256x384.uff
+# MODEL_DIR=$HOME/Downloads
+MODEL_FILE=hao28-600000-256x384.uff
 
 MODEL_URL=https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-600000-256x384.uff
 
