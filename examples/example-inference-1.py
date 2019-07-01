@@ -4,6 +4,7 @@ import argparse
 import os
 import sys
 import time
+import glob
 
 import tensorflow as tf
 import tensorlayer as tl
@@ -44,19 +45,21 @@ def inference(base_model_name, path_to_npz, data_format, input_files, plot):
 def parse_args():
     parser = argparse.ArgumentParser(description='inference')
     parser.add_argument('--path-to-npz', type=str, default='', help='path to npz', required=True)
-    parser.add_argument('--images', type=str, default='', help='comma separate list of image filenames', required=True)
+    #parser.add_argument('--images', type=str, default='', help='comma separate list of image filenames', required=True)
+    parser.add_argument('--images-dir', type=str, default='', help='directory containing images', required=True)
     parser.add_argument('--base-model', type=str, default='vgg', help='vgg | vggtiny | mobilenet')
     parser.add_argument('--data-format', type=str, default='channels_last', help='channels_last | channels_first.')
     parser.add_argument('--plot', type=bool, default=False, help='draw the results')
     parser.add_argument('--repeat', type=int, default=1, help='repeat the images for n times for profiling.')
-    parser.add_argument('--limit', type=int, default=100, help='max number of images.')
+    parser.add_argument('--limit', type=int, default=1000, help='max number of images.')
 
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    image_files = ([f for f in args.images.split(',') if f] * args.repeat)[:args.limit]
+    #image_files = ([f for f in args.images.split(',') if f] * args.repeat)[:args.limit]
+    image_files = glob.glob(args.images_dir)
     inference(args.base_model, args.path_to_npz, args.data_format, image_files, args.plot)
 
 

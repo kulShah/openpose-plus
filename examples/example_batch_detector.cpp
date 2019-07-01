@@ -1,7 +1,7 @@
 #include <chrono>
 #include <memory>
 
-#include "trace.hpp"
+// #include "trace.hpp"
 #include <gflags/gflags.h>
 #include <opencv2/opencv.hpp>
 
@@ -25,7 +25,7 @@ DEFINE_string(image_files, "", "Comma separated list of pathes to image.");
 
 int main(int argc, char *argv[])
 {
-    TRACE_SCOPE(__func__);
+    // TRACE_SCOPE(__func__);
     gflags::ParseCommandLineFlags(&argc, &argv, true);
 
     // TODO: derive from model

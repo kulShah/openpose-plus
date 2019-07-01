@@ -11,7 +11,7 @@ chmod +x ./scripts/install-pafprocess.sh
 wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-pose345000.npz
 
 # Command to run inference example 1
-# python3 ./examples/example-inference-1.py --path-to-npz='hao28-pose345000.npz' --images_dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental --data-format='channels_last'
+# python3 ./examples/example-inference-1.py --path-to-npz='hao28-pose345000.npz' --images-dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental --data-format='channels_last'
 
 # Freeze model before running inference example 2
 chmod +x ./scripts/freeze-graph.sh
