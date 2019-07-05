@@ -8,7 +8,7 @@ chmod +x ./scripts/install-pafprocess.sh
 ./scripts/install-pafprocess.sh
 
 # Download the model
-wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-pose345000.npz
+# wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-pose345000.npz
 
 wget https://media.githubusercontent.com/media/tensorlayer/pretrained-models/master/models/openpose-plus/hao28-600000-256x384.uff
 
