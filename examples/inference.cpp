@@ -1,3 +1,5 @@
+// Inference file using public c++ API of openpose plus
+
 #include <chrono>
 #include <memory>
 #include <thread>
@@ -6,8 +8,6 @@
 #include <gflags/gflags.h>
 #include <opencv2/opencv.hpp>
 #include <stdtensor>
-
-using ttl::tensor_ref;
 
 #include "channel.hpp"
 #include "stream_detector.h"
