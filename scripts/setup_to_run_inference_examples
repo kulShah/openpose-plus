@@ -23,4 +23,4 @@ chmod +x ./scripts/freeze-graph.sh
 
 # python3 ./examples/example-inference-2.py --path-to-freezed-model='checkpoints/freezed' --images-dir='./data/mscoco2017/test2017_subset/*.jpg' --base-model=hao28_experimental
 
-# g++ -std=c++11 ./examples/example_batch_detector.cpp -lgflags -lopencv_core -lopencv_highgui -lopencv_imgproc
+# g++ -std=c++11 ./examples/example_batch_detector.cpp `pkg-config --cflags --libs opencv`

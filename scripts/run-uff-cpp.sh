@@ -8,7 +8,7 @@ echo
 # MODEL_FILE=${MODEL_DIR}/hao28-600000-256x384.uff
 MODEL_FILE=hao28-600000-256x384.uff
 
-repeat=20
+repeat=2
 gksize=13
 
 run_batch_example() {
@@ -48,19 +48,33 @@ with_images() {
     #     $D/new-tests/cam0_27.png \
     #     $D/126/cam2_3938.png \
     #     $D/126/cam1_2386.png
-    local D=test2017_subset/
+    local D=test2017_subset_2/
     $1 \
         $D/000000000016.jpg \
-        $D/000000000069.jpg
-        $D/000000000080.jpg \
-        $D/000000000090.jpg \
-        # $D/000000000106.jpg \
-        # $D/000000000108.jpg \
-        # $D/000000000128.jpg \
-        # $D/000000000155.jpg \
-        # $D/000000000161.jpg
-
-}
+        $D/000000000057.jpg \
+        $D/000000000063.jpg \
+        $D/000000001730.jpg \
+        $D/000000001956.jpg \
+        $D/000000002032.jpg \
+        $D/000000002063.jpg \
+        $D/000000002122.jpg \
+        $D/000000002161.jpg \
+        $D/000000002253.jpg \
+        $D/000000002427.jpg \
+        $D/000000002519.jpg \
+        $D/000000002799.jpg \
+        $D/000000003136.jpg \
+        $D/000000003903.jpg \
+        $D/000000004001.jpg \
+        $D/000000004200.jpg \
+        $D/000000004335.jpg \
+        $D/000000004398.jpg \
+        $D/000000004432.jpg \
+        $D/000000004499.jpg \
+        $D/000000004790.jpg \
+        $D/000000005134.jpg \
+        $D/000000005817.jpg
+} 
 
 with_images run_batch_example
 # with_images run_stream_example
