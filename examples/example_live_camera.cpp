@@ -30,11 +30,12 @@ struct camera_t {
 
     channel<cv::Mat> &ch;
 
-    camera_t(channel<cv::Mat> &ch, int fps = 24) : fps(fps), ch(ch) {}
+    camera_t(channel<cv::Mat> &ch, int fps = 30) : fps(fps), ch(ch) {}
 
     void monitor()
     {
-        const int delay = 1000 / fps;
+        // const int delay = 1000 / fps;
+        const int delay = 1;
         const int height = FLAGS_input_height;
         const int width = FLAGS_input_width;
 
