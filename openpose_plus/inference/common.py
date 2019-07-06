@@ -253,6 +253,7 @@ def plot_humans(image, heatMat, pafMat, humans, name):
     plt.colorbar()
     mkpath('vis')
     plt.savefig('vis/result-%s.png' % name)
+    plt.close()
 
 
 def rename_tensor(x, name):
