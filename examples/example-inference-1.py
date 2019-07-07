@@ -39,7 +39,7 @@ def inference(base_model_name, path_to_npz, data_format, input_files, plot):
             plot_humans(image, heatMap, pafMap, humans, '%02d' % (idx + 1))
     tot = time.time() - t0
     mean = tot / len(input_files)
-    tl.logging.info('inference all took: %f, mean: %f, FPS: %f' % (tot, mean, 1.0 / mean))
+    tl.logging.info('inference all took: %f, mean: %f, FPS: %f, Number_of_images_processed: %d' % (tot, mean, 1.0 / mean, len(input_files)))
 
 
 def parse_args():
@@ -52,6 +52,7 @@ def parse_args():
     parser.add_argument('--plot', type=bool, default=False, help='draw the results')
     parser.add_argument('--repeat', type=int, default=1, help='repeat the images for n times for profiling.')
     parser.add_argument('--limit', type=int, default=1000, help='max number of images.')
+        
 
     return parser.parse_args()
 
@@ -59,7 +60,7 @@ def parse_args():
 def main():
     args = parse_args()
     #image_files = ([f for f in args.images.split(',') if f] * args.repeat)[:args.limit]
-    image_files = glob.glob(args.images_dir)
+    image_files = glob.glob(args.images_dir)[:args.limit]
     inference(args.base_model, args.path_to_npz, args.data_format, image_files, args.plot)
 
 

@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# Setup script to run ./examples
+# Setup script to run ./examples/example-inference-1.py
 
 apt-get update
+apt-get install -y bc swig libgflags-dev
 pip3 install -r requirements.txt
+pip install pycocotools
 chmod +x ./scripts/install-pafprocess.sh 
 ./scripts/install-pafprocess.sh
 
