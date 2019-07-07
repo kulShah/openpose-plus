@@ -90,7 +90,8 @@ void pose_detector_impl::one_batch(const std::vector<std::string> &image_files,
     {
         TRACE_SCOPE("batch run tensorRT");
         (*compute_feature_maps)({chw_images.data()},
-                                {confs.data(), pafs.data()},
+                                // {confs.data(), pafs.data()},
+                                {pafs.data(), confs.data()},
                                 image_files.size());
     }
     {
