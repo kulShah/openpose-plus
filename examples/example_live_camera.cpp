@@ -30,7 +30,7 @@ struct camera_t {
 
     channel<cv::Mat> &ch;
 
-    camera_t(channel<cv::Mat> &ch, int fps = 30) : fps(fps), ch(ch) {}
+    camera_t(channel<cv::Mat> &ch, int fps = 24) : fps(fps), ch(ch) {}
 
     void monitor()
     {
