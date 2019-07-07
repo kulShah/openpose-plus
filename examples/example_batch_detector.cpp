@@ -9,7 +9,7 @@
 #include "utils.hpp"
 
 // Model flags
-DEFINE_string(model_file, "vgg.uff", "Path to uff model.");
+DEFINE_string(model_file, "hao28-600000-256x384.uff", "Path to uff model.");
 DEFINE_int32(input_height, 368, "Height of input image.");
 DEFINE_int32(input_width, 432, "Width of input image.");
 
@@ -43,7 +43,9 @@ int main(int argc, char *argv[])
         using duration_t = std::chrono::duration<double>;
         const auto t0 = clock_t::now();
 
+
         pd->inference(files);
+        std::cout<<"inferencing done"<<std::endl;
 
         const int n = files.size();
         const duration_t d = clock_t::now() - t0;

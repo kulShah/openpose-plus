@@ -4,8 +4,9 @@ set -e
 make
 echo
 
-MODEL_DIR=$HOME/Downloads
-MODEL_FILE=${MODEL_DIR}/hao28-600000-256x384.uff
+# MODEL_DIR=$HOME/Downloads
+# MODEL_FILE=${MODEL_DIR}/hao28-600000-256x384.uff
+MODEL_FILE=hao28-600000-256x384.uff
 
 repeat=20
 gksize=13
@@ -41,13 +42,25 @@ run_stream_example() {
 }
 
 with_images() {
-    local D=$HOME/var/data/openpose
+    # local D=$HOME/var/data/openpose
+    # $1 \
+    #     $D/examples/media/COCO_val2014_000000000192.png \
+    #     $D/new-tests/cam0_27.png \
+    #     $D/126/cam2_3938.png \
+    #     $D/126/cam1_2386.png
+    local D=test2017_subset/
     $1 \
-        $D/examples/media/COCO_val2014_000000000192.png \
-        $D/new-tests/cam0_27.png \
-        $D/126/cam2_3938.png \
-        $D/126/cam1_2386.png
+        $D/000000000016.jpg \
+        $D/000000000069.jpg
+        $D/000000000080.jpg \
+        $D/000000000090.jpg \
+        # $D/000000000106.jpg \
+        # $D/000000000108.jpg \
+        # $D/000000000128.jpg \
+        # $D/000000000155.jpg \
+        # $D/000000000161.jpg
+
 }
 
-# with_images run_batch_example
-with_images run_stream_example
+with_images run_batch_example
+# with_images run_stream_example

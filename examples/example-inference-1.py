@@ -51,6 +51,7 @@ def parse_args():
     parser.add_argument('--data-format', type=str, default='channels_last', help='channels_last | channels_first.')
     parser.add_argument('--plot', type=bool, default=False, help='draw the results')
     parser.add_argument('--repeat', type=int, default=1, help='repeat the images for n times for profiling.')
+    parser.add_argument('--limit', type=int, default=1000, help='max number of images.')
         
 
     return parser.parse_args()

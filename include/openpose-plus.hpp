@@ -1,6 +1,6 @@
 // The public C++ API of openpose-plus
 #pragma once
-#include <openpose-plus/human.h>
+#include "openpose-plus/human.h"
 
 /*! \interface pose_detection_runner
     A class that runs a the pose detection model, which computes the feature

@@ -1,3 +1,5 @@
+// Inference file using public c++ API of openpose plus
+
 #include <chrono>
 #include <memory>
 #include <thread>
@@ -6,8 +8,6 @@
 #include <gflags/gflags.h>
 #include <opencv2/opencv.hpp>
 #include <stdtensor>
-
-using ttl::tensor_ref;
 
 #include "channel.hpp"
 #include "stream_detector.h"
@@ -30,12 +30,11 @@ struct camera_t {
 
     channel<cv::Mat> &ch;
 
-    camera_t(channel<cv::Mat> &ch, int fps = 30) : fps(fps), ch(ch) {}
+    camera_t(channel<cv::Mat> &ch, int fps = 24) : fps(fps), ch(ch) {}
 
     void monitor()
     {
-        // const int delay = 1000 / fps;
-        const int delay = 1;
+        const int delay = 1000 / fps;
         const int height = FLAGS_input_height;
         const int width = FLAGS_input_width;
 
