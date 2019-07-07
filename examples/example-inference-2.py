@@ -47,7 +47,7 @@ class TfPoseestimatorLoader(TfPoseEstimator):
         self.persistent_sess = tf.InteractiveSession(graph=graph)
 
 
-def inference(path_to_freezed_model, input_files):
+def inference(path_to_freezed_model, input_files, plot):
     h, w = 368, 432
     e = measure(lambda: TfPoseestimatorLoader(path_to_freezed_model, target_size=(w, h)),
                 'create TfPoseestimatorLoader')
@@ -58,7 +58,8 @@ def inference(path_to_freezed_model, input_files):
         if humans:
             for h in humans:
                 print(h)
-        plot_humans(image, heatMap, pafMap, humans, '%02d' % (idx + 1))
+        if plot:
+          plot_humans(image, heatMap, pafMap, humans, '%02d' % (idx + 1))
 
 
 def parse_args():
@@ -68,6 +69,7 @@ def parse_args():
     #parser.add_argument('--images', type=str, default='', help='comma separate list of image filenames', required=True)
     parser.add_argument('--images-dir', type=str, default='', help='directory containing images', required=True)
     parser.add_argument('--limit', type=int, default=1000, help='max number of images.')
+    parser.add_argument('--plot', type=bool, default=False, help='draw the results')
     return parser.parse_args()
 
 
@@ -75,4 +77,4 @@ if __name__ == '__main__':
     args = parse_args()
     # image_files = [f for f in args.images.split(',') if f]
     image_files = glob.glob(args.images_dir)[:args.limit]
-    inference(args.path_to_freezed_model, image_files)
+    inference(args.path_to_freezed_model, image_files, args.plot)
