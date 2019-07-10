@@ -23,8 +23,7 @@ template <int J> struct human_t_ {
         for (int i = 0; i < J; ++i) {
             const auto p = parts[i];
             if (p.has_value) {
-                printf("BodyPart:%d-(%.2f, %.2f) score=%.2f ", i, p.x, p.y,
-                       p.score);
+                printf("BodyPart:%d-(%.2f, %.2f) score=%.2f ", i, p.x, p.y, p.score);
             }
         }
         printf("score=%.2f\n", score);

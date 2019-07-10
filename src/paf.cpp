@@ -182,8 +182,7 @@ class paf_processor_impl : public paf_processor
 
         std::vector<human_ref_t> human_refs;
         for (int pair_id = 0; pair_id < COCO_N_PAIRS; pair_id++) {
-            // printf("pair_id: %d, has %lu connections\n", pair_id,
-            //        all_connections[pair_id].size());
+            // printf("pair_id: %d, has %lu connections\n", pair_id, all_connections[pair_id].size());
 
             const auto coco_pair = COCOPAIRS[pair_id];
             const int part_id1 = coco_pair.first;
@@ -197,8 +196,7 @@ class paf_processor_impl : public paf_processor
                         hr_ids.push_back(hr.id);
                     }
                 }
-                // printf("%lu humans touches this connection\n",
-                // hr_ids.size());
+                // printf("%lu humans touches this connection\n", hr_ids.size());
 
                 if (hr_ids.size() == 1) {
                     auto &hr1 = human_refs[hr_ids[0]];
@@ -248,7 +246,7 @@ class paf_processor_impl : public paf_processor
             }
         }
 
-        printf("got %lu incomplete humans\n", human_refs.size());
+        // printf("got %lu incomplete humans\n", human_refs.size());
 
         human_refs.erase(std::remove_if(human_refs.begin(), human_refs.end(),
                                         [&](const human_ref_t &hr) {
@@ -287,7 +285,7 @@ class paf_processor_impl : public paf_processor
             getAllConnections(pafmap, all_peaks, peak_ids_by_channel);
 
         const auto human_refs = getHumans(all_peaks, all_connections);
-        printf("got %lu humans\n", human_refs.size());
+        // printf("got %lu humans\n", human_refs.size());
 
         {
             TRACE_SCOPE("generate output");

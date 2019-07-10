@@ -123,7 +123,7 @@ class stream_detector_impl : public stream_detector
                 const auto q = feature_stream_2.get();
                 const auto humans =
                     (*process_paf)(q.heatmap_ptr, q.paf_ptr, false);
-                printf("got %lu humnas from %d-th image\n", humans.size(), i);
+                // printf("got %lu humnas from %d-th image\n", humans.size(), i);
                 bool draw_humans = true;
                 if (draw_humans) {
                     cv::Mat resized_image(cv::Size(width, height), CV_8UC(3),

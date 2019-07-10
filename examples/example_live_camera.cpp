@@ -30,7 +30,7 @@ struct camera_t {
 
     channel<cv::Mat> &ch;
 
-    camera_t(channel<cv::Mat> &ch, int fps = 30) : fps(fps), ch(ch) {}
+    camera_t(channel<cv::Mat> &ch, int fps = 24) : fps(fps), ch(ch) {}
 
     void monitor()
     {
@@ -49,8 +49,7 @@ struct camera_t {
         // cv::Mat frame;
         for (int i = 0;; ++i) {
             cap >> frame;
-            printf("#%d :: %d x %d\n", i, frame.size().height,
-                   frame.size().width);
+            // printf("#%d :: %d x %d\n", i, frame.size().height, frame.size().width);
             ch.put(frame);
             cv::waitKey(delay);
         }
@@ -62,13 +61,14 @@ struct screen_t {
     const int fps;
     const int delay;
 
-    screen_t(const std::string &name, int fps = 24)
-        : name(name), fps(fps), delay(1000 / fps)
+    // screen_t(const std::string &name, int fps = 24) : name(name), fps(fps), delay(1000 / fps)
+    screen_t(const std::string &name, int fps = 24) : name(name), fps(fps), delay(1)
     {
     }
 
-    void display(const cv::Mat &frame)
+    void display(cv::Mat &frame)
     {
+        cv::resize(frame, frame, cv::Size(), 3.0, 3.0);
         cv::imshow(name, frame);
         cv::waitKey(delay);
     }
@@ -107,7 +107,7 @@ struct handler : screen_t, stream_detector::handler_t {
     void operator()(cv::Mat &image, const std::vector<human_t> &humans) override
     {
         for (const auto &h : humans) {
-            h.print();
+            // h.print();
             draw_human(image, h);
         }
         display(image);
@@ -131,6 +131,7 @@ int main(int argc, char *argv[])
     std::vector<std::thread> ths;
 
     channel<cv::Mat> ch(24);
+    printf("Running pose estimation inference...\n");
 
     ths.push_back(std::thread([&]() {
         camera_t c1(ch);

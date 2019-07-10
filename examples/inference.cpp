@@ -48,8 +48,7 @@ struct camera_t {
         // cv::Mat frame;
         for (int i = 0;; ++i) {
             cap >> frame;
-            printf("#%d :: %d x %d\n", i, frame.size().height,
-                   frame.size().width);
+            // printf("#%d :: %d x %d\n", i, frame.size().height, frame.size().width);
             ch.put(frame);
             cv::waitKey(delay);
         }

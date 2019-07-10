@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-make
+make -j"$(($(nproc) + 1))"
 echo
 
 # MODEL_DIR=$HOME/Downloads

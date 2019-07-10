@@ -197,8 +197,7 @@ template <typename T> class peak_finder_t
                 }
             }
         }
-        printf("selected %lu peaks with value > %f\n", all_peaks.size(),
-               threshold);
+        // printf("selected %lu peaks with value > %f\n", all_peaks.size(), threshold);
         return all_peaks;
     }
 
